@@ -1,7 +1,8 @@
 function []=maptilemaker(gpscoords,style,tilecoord)
-    %check edges
-    %Download 1280x1280 picture of zoom levels 5-13
     for zoom=5:13
+        %Download 1280x1280 picture of zoom levels 5-13
+        mapdownload(zoom,gpscoords,[640 640]);
+        %check edges
         %Remove bottom strip of picture
         %Generate Fuzzy Picture to Compare to
         %Calculate 2d cross correlation
