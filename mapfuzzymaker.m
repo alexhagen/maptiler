@@ -1,5 +1,6 @@
 function [fuzzyf,f]=mapfuzzymaker(f)
     I=imread(f);
+    I=imresize(I, 0.6);
     %Create White Strips around the border
     I(:,1:15,:)=255;
     I(1:15,:,:)=255;
@@ -17,5 +18,5 @@ function [fuzzyf,f]=mapfuzzymaker(f)
     I(end-15:end,floor(size(I,1)/2)-2:ceil(size(I,1)/2)+2,:)=0;
     imshow(I);
     fuzzyf=[f(1:end-4) 'fuzzy.png'];
-    imwrite(I,f);
+    imwrite(I,fuzzyf);
 end
