@@ -5,6 +5,7 @@ function []=maptilemaker(gpscoords,style)
         %Remove bottom strip of picture and check edges
         f=mapcrop(f);
         %Generate Fuzzy Picture to Compare to
+        [fuzzyf,f]=mapfuzzymaker(f);
         %Calculate 2d cross correlation
         %Calculate the total difference at that 2dxcorr, save to array
     end
