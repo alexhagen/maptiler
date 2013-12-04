@@ -38,5 +38,5 @@ function []=maptilemaker(gpscoords,style)
     move_sets= [offset(1)-picsize(1)/2 offset(2)-picsize(2)/2]./picsize;
     [bounds]=mapmove(s(max_cc_ind).gpscoords,s(max_cc_ind).zoom,move_sets);
     %Download the tiled picture
-    mapmake(bounds,'something.png');
+    mapmake(bounds,'C:\Users\ahagen\Desktop\something.png');
 end
