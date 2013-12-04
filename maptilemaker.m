@@ -4,7 +4,7 @@ function []=maptilemaker(gpscoords,style)
             'f',[],'croppedf',[],'fuzzyf',[],...
             'cc',[],'max_cc',[],'disable',[],...
             'left',[],'right',[],'top',[],'bottom',[]);
-    for i=1:numel(zoom)
+    for i=1:3%numel(zoom)
         s(i).gpscoords=gpscoords;
         s(i).zoom=zoom(i);
         %Download 1280x1280 picture of zoom levels 5-13
@@ -25,16 +25,14 @@ function []=maptilemaker(gpscoords,style)
             s(i).fuzzyf=fuzzyf;
             %Calculate 2d cross correlation and save performance number
             [cc,max_cc]=mapxcorr(croppedf,fuzzyf);
-            s(i).cc=cc;
+            s(i).cc=cc
             s(i).max_cc=max_cc;
-            %s=struct('gpscoords',gpscoords,'zoom',zoom(i),...
-                %'f',f,'croppedf',croppedf,'fuzzyf',fuzzyf,...
-                %'cc',cc,'max_cc',max_cc);
         end
     end
     %find the max performance value to find the best fit
     max_cc_arr=arrayfun(@(x)(x.max_cc),s);
     max_cc_ind=find(max(max_cc_arr)==max_cc_arr);
+    offset=s(i).cc
     %determine the center of this picture in gps coords and zoom
     %Style the map
     %Download the tiled picture
