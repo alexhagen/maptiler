@@ -1,5 +1,5 @@
 function []=maptilemaker(gpscoords,style)
-    zoom = [5:13];
+    zoom = [9:13];
     picsize = [700 560];
     s=struct('gpscoords',[],'zoom',[],...
             'f',[],'croppedf',[],'fuzzyf',[],...
@@ -33,11 +33,10 @@ function []=maptilemaker(gpscoords,style)
     %find the max performance value to find the best fit
     max_cc_arr=arrayfun(@(x)(x.max_cc),s);
     max_cc_ind=find(max(max_cc_arr)==max_cc_arr);
-    offset=s(i).cc
+    offset=s(max_cc_ind).cc;
     %determine the center of this picture in gps coords and zoom
     move_sets= [offset(1)-picsize(1)/2 offset(2)-picsize(2)/2]./picsize;
-    [bounds]=mapmove(s(i).gpscoords,s(i).zoom,move_sets);
-    %Style the map
-    
+    [bounds]=mapmove(s(max_cc_ind).gpscoords,s(max_cc_ind).zoom,move_sets);
     %Download the tiled picture
+    mapmake(bounds,'something.png');
 end
