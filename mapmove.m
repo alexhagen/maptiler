@@ -1,0 +1,19 @@
+function [bounds]=mapmove(gpscoords,zoom,move_sets)
+    f=fopen('C:\Maperitive\Scripts\moving.mscript','w');
+    fprintf(f,['use-ruleset alias=default\n' ...
+                'add-web-map provider="stamen.toner"\n' ...
+                'move-pos x=%f y=%f zoom=%d\n' ...
+                'move-screen-pos x=%f y=%f\n' ...
+                'dump-geo-bounds\n'],...
+                gpscoords(1),gpscoords(2),zoom,move_sets(1),move_sets(2));
+    fclose(f);
+    [~,result]=system(['C:/Maperitive/Maperitive.Console.exe ' ...
+        '-viewheight=700 -viewwidth=560 Scripts/moving.mscript']);
+    result=strrep(result,',',' ');
+    result=strrep(result,'(',' ');
+    result=strrep(result,')',' ');
+    result=strrep(result,'Finished successfully','');
+    k = strfind(result,'srid=');
+    result=strrep(result,result(1:k+9),'');
+    bounds=sscanf(result,'%f')';
+end
