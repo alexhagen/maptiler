@@ -1,5 +1,5 @@
 function []=maptilemaker(gpscoords,style,filename)
-    zoom = [9:13];
+    zoom = [13:16];
     picsize = [700 560];
     s=struct('gpscoords',[],'zoom',[],...
             'f',[],'croppedf',[],'fuzzyf',[],...
