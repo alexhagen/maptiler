@@ -1,11 +1,11 @@
-function []=maptilemaker(gpscoords,style)
+function []=maptilemaker(gpscoords,style,filename)
     zoom = [9:13];
     picsize = [700 560];
     s=struct('gpscoords',[],'zoom',[],...
             'f',[],'croppedf',[],'fuzzyf',[],...
             'cc',[],'max_cc',[],'disable',[],...
             'left',[],'right',[],'top',[],'bottom',[]);
-    for i=1:3%numel(zoom)
+    for i=1:numel(zoom)
         s(i).gpscoords=gpscoords;
         s(i).zoom=zoom(i);
         %Download correctly sized picture of zoom levels 5-13
@@ -26,7 +26,7 @@ function []=maptilemaker(gpscoords,style)
             s(i).fuzzyf=fuzzyf;
             %Calculate 2d cross correlation and save performance number
             [cc,max_cc]=mapxcorr(croppedf,fuzzyf);
-            s(i).cc=cc
+            s(i).cc=cc;
             s(i).max_cc=max_cc;
         end
     end
@@ -38,5 +38,5 @@ function []=maptilemaker(gpscoords,style)
     move_sets= [offset(1)-picsize(1)/2 offset(2)-picsize(2)/2]./picsize;
     [bounds]=mapmove(s(max_cc_ind).gpscoords,s(max_cc_ind).zoom,move_sets);
     %Download the tiled picture
-    mapmake(bounds,'C:\Users\ahagen\Desktop\something.png');
+    mapmake(bounds,style,['C:\Users\ahagen\Desktop\' filename]);
 end
