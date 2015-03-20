@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('svg')
 import matplotlib.pyplot as plt
+import math
+from scipy import nanmean
 
 # Created input file with:
 # mpg123  -w 20130509talk.wav 20130509talk.mp3
@@ -33,8 +35,14 @@ for num in range(c):
 	#nl, nr = np.fft.irfft(lf), np.fft.irfft(rf)
 	#ns = np.column_stack((nl,nr)).ravel().astype(np.int16)
 	#ww.writeframes(ns.tostring())
-	trackl.extend(left)
-	trackr.extend(right)
+	R = 100;
+	pad_size = math.ceil(float(left.size)/R)*R - left.size;
+	arr_l_padded = np.append(left, np.zeros(pad_size)*np.NaN);
+	l = nanmean(arr_l_padded.reshape(-1,R), axis=1);
+	arr_r_padded = np.append(right, np.zeros(pad_size)*np.NaN);
+	r = nanmean(arr_r_padded.reshape(-1,R), axis=1);
+	trackl.extend(l)
+	trackr.extend(r)
 sections = 10
 sect_size = (np.size(trackl)-1)/sections
 for section in range(0,sections):
@@ -42,7 +50,7 @@ for section in range(0,sections):
 	l = trackl[np.min(frames):np.max(frames)+1]
 	r = trackr[np.min(frames):np.max(frames)+1]
 	avg = np.divide(np.add(l,r),2.0);
-	fig = plt.figure(num=section+1,figsize=(8, 6), dpi=300)
+	fig = plt.figure(num=section+1,figsize=(16, 1.8), dpi=300)
 	a = plt.axes([0, 0, 1, 1])
 	plt.plot(frames,avg,'k-')
 	plt.axis('off')
