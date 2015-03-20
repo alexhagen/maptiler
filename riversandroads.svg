@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="riversandroads.pdf">
+   sodipodi:docname="riversandroads.svg">
   <defs
      id="defs4">
     <clipPath
@@ -166,7 +166,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.315625"
-     inkscape:cx="522.9703"
+     inkscape:cx="145.9406"
      inkscape:cy="1440"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -174,7 +174,7 @@
      units="in"
      inkscape:window-width="1877"
      inkscape:window-height="1056"
-     inkscape:window-x="1963"
+     inkscape:window-x="43"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
@@ -185,7 +185,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -496,7 +496,7 @@
        xml:space="preserve"
        id="flowRoot4072"
        style="font-size:56px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold"
-       transform="translate(0,-1779.9017)"><flowRegion
+       transform="translate(-1.828125,-1779.9017)"><flowRegion
          id="flowRegion4074"><rect
            id="rect4076"
            width="1441.5841"
