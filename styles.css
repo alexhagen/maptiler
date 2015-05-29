@@ -1,31 +1,45 @@
 #countries {
 	fill: white;
-	z-index:0;
 }
 #lakes, #oceans {
-	fill: blue;
+	fill: #99f;
 	stroke-width: 0.3px;
-	z-index:10;
 }
 #rivers {
 	fill: none;
 	stroke-width:0.3px;
-	stroke-color:blue;
-	z-index:10;
+	stroke-color:#eef;
 }
 #cities {
-	fill: gray;
-	z-index:100;
+	fill: #efefef;
+	stroke-width:0;
+	stroke-color:none;
 }
 #bath1 {
-	fill:blue;
-	z-index:10;
+	fill:#eef;
+	stroke-width:0.1;
+	stroke-color:#ccf;
 }
 #bath2 {
-	fill:black;
-	z-index:0;
+	fill:#eef;
+	stroke-width:0.1px;
+	stroke-color:#ccf;
+}
+#bath3 {
+	fill:#eef;
+	stroke-width:0.1px;
+	stroke-color:#ccf;
+}
+#bath4 {
+	fill:#eef;
+	stroke-width:0.1px;
+	stroke-color:#ccf;
+}
+#bath5 {
+	fill:#eef;
+	stroke-width:0.1px;
+	stroke-color:#ccf;
 }
 #mygraticule {
 	stroke-width: 0.3px;
-	z-index:100000;
 }
