@@ -1,0 +1,31 @@
+#countries {
+	fill: white;
+	z-index:0;
+}
+#lakes, #oceans {
+	fill: blue;
+	stroke-width: 0.3px;
+	z-index:10;
+}
+#rivers {
+	fill: none;
+	stroke-width:0.3px;
+	stroke-color:blue;
+	z-index:10;
+}
+#cities {
+	fill: gray;
+	z-index:100;
+}
+#bath1 {
+	fill:blue;
+	z-index:10;
+}
+#bath2 {
+	fill:black;
+	z-index:0;
+}
+#mygraticule {
+	stroke-width: 0.3px;
+	z-index:100000;
+}
