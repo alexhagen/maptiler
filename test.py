@@ -4,6 +4,26 @@ from kartograph import Kartograph
 K = Kartograph();
 css = open('styles.css').read()
 
+# first, lets write a shapefile with our trip plans
+from shapely.geometry import Polygon,mapping
+from fiona import collection
+schema = { 'geometry': 'Polygon', 'properties': { 'name': 'str' } }
+with collection(
+	'trip.shp','w','ESRI Shapefile', schema) as output:
+	geo = Polygon([(6.15,46.200),(9.7094,44.1269),(10.5,45.0)])
+	m = mapping(geo)
+	print m['type']
+	print m['coordinates']
+	output.write({
+		'properties': {
+			'name': 'geneva'
+		},
+		'geometry': m
+		})
+
+def cityfilter(record):
+	return record['NAME'] == 'Geneva' or record['NAME'] == 'Rome'
+
 config = {
 	"proj": {
 		"id": "satellite",
@@ -23,7 +43,15 @@ config = {
 			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_rivers_lake_centerlines_scale_rank.shp",
 			"simplify": 0,
 		},
-		"cities": {
+		"city1": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_populated_places.shp",
+			"simplify":0,
+			"filter": cityfilter,
+			"labeling": {
+				"key": "NAME"
+			}
+		},
+		"city2": {
 			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_urban_areas.shp",
 			"simplify":0,
 		},
@@ -49,6 +77,10 @@ config = {
 		},
 		"bath1": { 
 			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_L_0.shp",
+			"simplify": 0,
+		},
+		"trip": { 
+			"src": "trip.shp",
 			"simplify": 0,
 		},
 	},

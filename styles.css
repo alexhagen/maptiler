@@ -10,7 +10,7 @@
 	stroke-width:0.3px;
 	stroke-color:#eef;
 }
-#cities {
+#city2 {
 	fill: #efefef;
 	stroke-width:0;
 	stroke-color:none;
@@ -42,4 +42,13 @@
 }
 #mygraticule {
 	stroke-width: 0.3px;
+}
+#trip {
+	fill: #f00;
+	stroke-width:0.5px;
+	stroke-color:#000;
+}
+#city1-label {
+	font-family: Open-Sans;
+	font-size: 14pt;
 }
