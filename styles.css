@@ -7,48 +7,45 @@
 }
 #rivers {
 	fill: none;
-	stroke-width:0.3px;
-	stroke-color:#eef;
+	stroke-width:2px;
+	stroke:#99f;
 }
-#city2 {
-	fill: #efefef;
-	stroke-width:0;
-	stroke-color:none;
+#city {
+	fill: #0f0f0f;
 }
-#bath1 {
-	fill:#eef;
-	stroke-width:0.1;
-	stroke-color:#ccf;
-}
-#bath2 {
-	fill:#eef;
-	stroke-width:0.1px;
-	stroke-color:#ccf;
-}
-#bath3 {
-	fill:#eef;
-	stroke-width:0.1px;
-	stroke-color:#ccf;
-}
-#bath4 {
-	fill:#eef;
-	stroke-width:0.1px;
-	stroke-color:#ccf;
-}
-#bath5 {
-	fill:#eef;
-	stroke-width:0.1px;
-	stroke-color:#ccf;
+#city2-label {
+	font-family: Open-Sans;
+	font-size: 14pt;
 }
 #mygraticule {
 	stroke-width: 0.3px;
 }
-#trip {
-	fill: #f00;
-	stroke-width:0.5px;
-	stroke-color:#000;
+#parks {
+	fill: #efe;
+	stroke: none;
 }
-#city1-label {
+#forests {
+	fill: #dfd;
+	stroke: none;
+}
+#state-parks {
+	fill: #dfd;
+	stroke: none;
+}
+#parks-label {
 	font-family: Open-Sans;
 	font-size: 14pt;
+}
+#trip {
+	fill: none;
+	stroke-width:10px;
+	stroke:#f00;
+}
+#elevation {
+	fill: #f00;
+	stroke-width: 10px;
+	stroke: #888;
+}
+#forest {
+	fill: #f00;
 }

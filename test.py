@@ -1,98 +1,105 @@
 #!/home/ahagen/envs/kartograph/bin/python2.7
 from kartograph import Kartograph
 
+class mapconfig(object):
+	def __init__(self):
+		# initialize the configuration string
+		self.config = ''
+	def add_projection(id='satellite',lon=8.9328,lat=44.41111,dist=1.08,up=-20.0,tilt=-2.0):
+		self.config = self.config
+
 K = Kartograph();
 css = open('styles.css').read()
 
 # first, lets write a shapefile with our trip plans
-from shapely.geometry import Polygon,mapping
+from shapely.geometry import Polygon,LineString,mapping
 from fiona import collection
-schema = { 'geometry': 'Polygon', 'properties': { 'name': 'str' } }
+schema = { 'geometry': 'LineString', 'properties': { 'id': 'int' } }
 with collection(
 	'trip.shp','w','ESRI Shapefile', schema) as output:
-	geo = Polygon([(6.15,46.200),(9.7094,44.1269),(10.5,45.0)])
+	import shapefile
+	jmt = shapefile.Reader("jmt.shp");
+	points = []
+	for record in jmt.shapeRecords():
+	    points.extend(record.shape.points)
+	geo = LineString(points)
 	m = mapping(geo)
 	print m['type']
-	print m['coordinates']
 	output.write({
 		'properties': {
-			'name': 'geneva'
+			'id': 123
 		},
 		'geometry': m
 		})
 
-def cityfilter(record):
-	return record['NAME'] == 'Geneva' or record['NAME'] == 'Rome'
+#def cityfilter(record):
+#	return record['NAME'] == 'Geneva' or record['NAME'] == 'Rome'
 
 config = {
 	"proj": {
 		"id": "satellite",
-	    "lon0": 8.9328,
-	    "lat0": 44.4111,
+	    "lon0": -119.5587,
+	    "lat0": 37.7317,
 	    "dist": 1.08,
-	    "up": -20.0,
-	    "tilt": -2.0
+	    "up": -40.0,
+	    "tilt": -4.0
 	},
-	"layers": {	
-		"mygraticule": { "special": "graticule", "latitudes": 3, "longitudes": 3, },
-		"lakes": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_lakes.shp",
-			"simplify": 0,
-		},
-		"rivers": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_rivers_lake_centerlines_scale_rank.shp",
-			"simplify": 0,
-		},
-		"city1": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_populated_places.shp",
-			"simplify":0,
-			"filter": cityfilter,
-			"labeling": {
-				"key": "NAME"
-			}
-		},
-		"city2": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_urban_areas.shp",
-			"simplify":0,
-		},
-		"countries": { 
+	"layers": {
+		"mygraticule": { "special": "graticule", "latitudes": 12, "longitudes": 12, },
+		"countries": {
 			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
 			"simplify": 0,
 		},
-		"bath5": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_H_3000.shp",
+		"lakes": {
+			"src": "/home/ahagen/mapdata/california_natural.shp",
+			"simplify": 1,
+		},
+		"rivers": {
+			"src": "/home/ahagen/mapdata/ne_10m_rivers_north_america.shp",
 			"simplify": 0,
 		},
-		"bath4": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_I_2000.shp",
+		"parks": {
+			"src": "/home/ahagen/mapdata/ne_10m_parks_and_protected_lands_area.shp",
+			"simplify": 0,
+			"labeling": {
+				"key": "NAME_1",
+			},
+		},
+		"forests": {
+			"src": "/home/ahagen/mapdata/VegetationNorthAmericaPolygons.shp",
 			"simplify": 0,
 		},
-		"bath3": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_J_1000.shp",
+		"state-parks": {
+			"src": "/home/ahagen/mapdata/caStateParkBdys2014a.shp",
 			"simplify": 0,
 		},
-		"bath2": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_K_200.shp",
+		"elevation": {
+			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_geography_regions_elevation_points.shp",
+		},
+		"roads": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_roads_north_america.shp",
+		},
+		"city": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_urban_areas.shp",
 			"simplify": 0,
 		},
-		"bath1": { 
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_L_0.shp",
-			"simplify": 0,
+		"city2": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_populated_places.shp",
+			"labeling": {
+		        "key": "NAME"
+		    }
 		},
-		"trip": { 
+		"trip": {
 			"src": "trip.shp",
 			"simplify": 0,
 		},
 	},
-	
 	"export": {
-		"width": 800,
-		"round": 2
+		"width": 1200,
 	},
-		"bounds": {
+	"bounds": {
 		"mode": "bbox",
-		"data": [5.15, 39.35, 16.1667, 46.2],
-		"crop": [2.15, 37.35, 20.1667, 52.2],
+		"data": [-120, 37.5, -117, 37.85],
 	}
 }
 
@@ -111,4 +118,9 @@ K.generate(config,outfile='/home/ahagen/code/maps/mymap.svg', stylesheet=css);
 			"src": "/home/ahagen/mapdata/10m_cultural",
 			"simplify": 0
 		}
+				"countries": {
+					"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
+					"simplify": 0,
+				},
+
 '''
