@@ -25,7 +25,7 @@
 	stroke: none;
 }
 #forests {
-	fill: #dfd;
+	fill: #8f8;
 	stroke: none;
 }
 #state-parks {
@@ -43,8 +43,8 @@
 }
 #elevation {
 	fill: #f00;
-	stroke-width: 10px;
-	stroke: #888;
+	stroke-width: 1px;
+	stroke: #f00;
 }
 #forest {
 	fill: #f00;

@@ -46,53 +46,15 @@ config = {
 	},
 	"layers": {
 		"mygraticule": { "special": "graticule", "latitudes": 12, "longitudes": 12, },
-		"countries": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
-			"simplify": 0,
-		},
-		"lakes": {
-			"src": "/home/ahagen/mapdata/california_natural.shp",
-			"simplify": 1,
-		},
-		"rivers": {
-			"src": "/home/ahagen/mapdata/ne_10m_rivers_north_america.shp",
-			"simplify": 0,
-		},
-		"parks": {
-			"src": "/home/ahagen/mapdata/ne_10m_parks_and_protected_lands_area.shp",
-			"simplify": 0,
-			"labeling": {
-				"key": "NAME_1",
-			},
-		},
-		"forests": {
-			"src": "/home/ahagen/mapdata/VegetationNorthAmericaPolygons.shp",
-			"simplify": 0,
-		},
-		"state-parks": {
-			"src": "/home/ahagen/mapdata/caStateParkBdys2014a.shp",
-			"simplify": 0,
-		},
 		"elevation": {
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_geography_regions_elevation_points.shp",
-		},
-		"roads": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_roads_north_america.shp",
-		},
-		"city": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_urban_areas.shp",
+			"src": "elev.shp",
 			"simplify": 0,
-		},
-		"city2": {
-			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_populated_places.shp",
-			"labeling": {
-		        "key": "NAME"
-		    }
 		},
 		"trip": {
 			"src": "trip.shp",
 			"simplify": 0,
 		},
+		
 	},
 	"export": {
 		"width": 1200,
@@ -122,5 +84,46 @@ K.generate(config,outfile='/home/ahagen/code/maps/mymap.svg', stylesheet=css);
 					"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
 					"simplify": 0,
 				},
+
+
+"parks": {
+			"src": "/home/ahagen/mapdata/ne_10m_parks_and_protected_lands_area.shp",
+			"simplify": 0,
+			"labeling": {
+				"key": "NAME_1",
+			},
+		},
+		"forests": {
+			"src": "/home/ahagen/mapdata/VegetationNorthAmericaPolygons.shp",
+			"simplify": 0,
+		},
+		"elevation": {
+			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_geography_regions_elevation_points.shp",
+		},
+		"roads": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_roads_north_america.shp",
+		},
+		"city": {
+			"src": "/home/ahagen/mapdata/Cities2014.shp",
+			"simplify": 0,
+		},
+		"city2": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_populated_places.shp",
+			"labeling": {
+		        "key": "NAME"
+		    }
+		},
+		"countries": {
+			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
+			"simplify": 0,
+		},
+		"lakes": {
+			"src": "/home/ahagen/mapdata/california_natural.shp",
+			"simplify": 1,
+		},
+		"rivers": {
+			"src": "/home/ahagen/mapdata/ne_10m_rivers_north_america.shp",
+			"simplify": 0,
+		},
 
 '''
