@@ -12,6 +12,7 @@ K = Kartograph();
 css = open('styles.css').read()
 
 # first, lets write a shapefile with our trip plans
+'''
 from shapely.geometry import Polygon,LineString,mapping
 from fiona import collection
 schema = { 'geometry': 'LineString', 'properties': { 'id': 'int' } }
@@ -24,16 +25,13 @@ with collection(
 	    points.extend(record.shape.points)
 	geo = LineString(points)
 	m = mapping(geo)
-	print m['type']
 	output.write({
 		'properties': {
 			'id': 123
 		},
 		'geometry': m
 		})
-
-#def cityfilter(record):
-#	return record['NAME'] == 'Geneva' or record['NAME'] == 'Rome'
+'''
 
 config = {
 	"proj": {
