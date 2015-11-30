@@ -1,51 +1,29 @@
-#countries {
-	fill: white;
+#countries, #states {
+	stroke-width:0.3px;
+	stroke:#888;
 }
-#lakes, #oceans {
-	fill: #99f;
-	stroke-width: 0.3px;
+#lakes, #background, #oceans {
+	fill: #ccf;
+	stroke:none;
 }
 #rivers {
 	fill: none;
-	stroke-width:2px;
-	stroke:#99f;
+	stroke-width:0.5px;
+	stroke:#ccf;
 }
 #city {
-	fill: #0f0f0f;
-}
-#city2-label {
-	font-family: Open-Sans;
-	font-size: 14pt;
+	fill: #ccc;
+	stroke: none;
 }
 #mygraticule {
 	stroke-width: 0.3px;
 }
 #parks {
-	fill: #efe;
+	fill: #cfc;
 	stroke: none;
 }
-#forests {
-	fill: #8f8;
-	stroke: none;
-}
-#state-parks {
-	fill: #dfd;
-	stroke: none;
-}
-#parks-label {
-	font-family: Open-Sans;
-	font-size: 14pt;
-}
-#trip {
+#trip, #trip2, #trip3, #trip4, #trip5, #trip6, #trip7 {
 	fill: none;
-	stroke-width:10px;
+	stroke-width:2px;
 	stroke:#f00;
-}
-#elevation {
-	fill: none;
-	stroke-width: 1px;
-	stroke: #888;
-}
-#forest {
-	fill: #f00;
 }
