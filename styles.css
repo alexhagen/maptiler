@@ -1,15 +1,16 @@
-#countries, #states {
-	stroke-width:0.3px;
-	stroke:#888;
-}
-#lakes, #background, #oceans {
+#background, #oceans {
 	fill: #ccf;
 	stroke:none;
 }
-#rivers {
-	fill: none;
-	stroke-width:0.5px;
-	stroke:#ccf;
+#countries {
+	stroke-width:0.3px;
+	stroke:#aaa;
+	fill: #666;
+}
+#states {
+	fill: #888;
+	stroke-width: 2px;
+	stroke: #aaa;
 }
 #city {
 	fill: #ccc;
@@ -22,6 +23,20 @@
 	fill: #cfc;
 	stroke: none;
 }
+#parks-label {
+    font-family: Brody;
+    font-size: 22px;
+}
+#lakes{
+	fill: #ccf;
+	stroke:none;
+}
+#rivers {
+	fill: none;
+	stroke-width:0.5px;
+	stroke:#ccf;
+}
+
 #trip, #trip2, #trip3, #trip4, #trip5, #trip6, #trip7 {
 	fill: none;
 	stroke-width:2px;

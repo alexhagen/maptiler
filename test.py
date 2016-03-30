@@ -206,14 +206,14 @@ config = {
 			"simplify": 1,
 		},
 		"oceans": {
-			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_ocean.shp",
+			"src": "/home/ahagen/mapdata/10m_physical/ne_10m_bathymetry_all/ne_10m_bathymetry_L_0.shp",
 			"simplify": 0,
 		},
 		"countries": {
 			"src": "/home/ahagen/mapdata/10m_cultural/ne_10m_admin_0_countries.shp",
 			"simplify": 1,
 		},
-		
+
 	},
 	"export": {
 		"width": 1920,
